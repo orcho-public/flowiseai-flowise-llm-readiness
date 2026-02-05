@@ -40,6 +40,6 @@ All findings in the report:
 - can be verified by inspecting the code in this repository,
 - require no special tooling or interpretation.
 
-The analysis is intentionally conservative and includes **only high-confidence, manually verified mismatches**.
+The analysis is intentionally conservative and includes **only high-confidence, verified mismatches**.
 
 ---
