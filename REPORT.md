@@ -5,19 +5,12 @@
 ---
 ## Executive summary
 
-- **44 findings** were reviewed from the raw Flowise contradictions output.
-- **38 findings are included below as verified documentation–implementation contradictions** (items #6, #14, #16, #24, #25, #41 were excluded as non‑verified/overstated/ambiguous).
+- **38 findings are included below as verified documentation–implementation contradictions**
 - The dominant patterns are:
   - **async vs sync contract drift** (missing `await` risk)
   - **return type drift** (`Promise<T>` vs `T`, `string` vs structured object, `void` vs object, arrays vs single value)
   - **parameter naming drift** (e.g., `obj` vs `data`)
 - These issues may not break runtime behavior today, but they **materially increase LLM hallucination risk** by misrepresenting runtime contracts.
-
----
-
-**Note for readers**
-
-This report is a reformatted and filtered version of the “Flowise — Orcho Code & Documentation Consistency Report.” Only findings verified in the accompanying verification list are included.
 
 ---
 ## How LLM and AI risk arises
@@ -93,7 +86,7 @@ Each failure increases retries, corrective turns, and token usage—directly inc
 
 ---
 
-### 7. `AWSBedrock_LLMs`
+### 6. `AWSBedrock_LLMs`
 
 - **Location:** `packages/components/nodes/llms/AWSBedrock/AWSBedrock.ts:12`
 - **Severity:** MEDIUM
@@ -103,7 +96,7 @@ Each failure increases retries, corrective turns, and token usage—directly inc
 
 ---
 
-### 8. `LoadOfSheet`
+### 7. `LoadOfSheet`
 
 - **Location:** `packages/components/nodes/documentloaders/MicrosoftExcel/ExcelLoader.ts:12`
 - **Severity:** MEDIUM
@@ -113,7 +106,7 @@ Each failure increases retries, corrective turns, and token usage—directly inc
 
 ---
 
-### 9. `CSVLoader`
+### 8. `CSVLoader`
 
 - **Location:** `packages/components/nodes/documentloaders/Csv/CsvLoader.ts:19`
 - **Severity:** MEDIUM
@@ -123,7 +116,7 @@ Each failure increases retries, corrective turns, and token usage—directly inc
 
 ---
 
-### 10. `ChatNemoGuardrailsModel`
+### 9. `ChatNemoGuardrailsModel`
 
 - **Location:** `packages/components/nodes/chatmodels/ChatNemoGuardrails/ChatNemoGuardrails.ts:26`
 - **Severity:** MEDIUM
@@ -133,7 +126,7 @@ Each failure increases retries, corrective turns, and token usage—directly inc
 
 ---
 
-### 11. `UnstructuredLoader`
+### 10. `UnstructuredLoader`
 
 - **Location:** `packages/components/nodes/documentloaders/Unstructured/Unstructured.ts:29`
 - **Severity:** MEDIUM
@@ -143,7 +136,7 @@ Each failure increases retries, corrective turns, and token usage—directly inc
 
 ---
 
-### 12. `ChatFireworks`
+### 11. `ChatFireworks`
 
 - **Location:** `packages/components/nodes/chatmodels/ChatFireworks/core.ts:30`
 - **Severity:** MEDIUM
@@ -153,7 +146,7 @@ Each failure increases retries, corrective turns, and token usage—directly inc
 
 ---
 
-### 13. `HuggingFaceInference`
+### 12. `HuggingFaceInference`
 
 - **Location:** `packages/components/nodes/llms/HuggingFaceInference/core.ts:32`
 - **Severity:** MEDIUM
@@ -163,7 +156,7 @@ Each failure increases retries, corrective turns, and token usage—directly inc
 
 ---
 
-### 15. `APIChain`
+### 13. `APIChain`
 
 - **Location:** `packages/components/nodes/chains/ApiChain/postCore.ts:55`
 - **Severity:** MEDIUM
@@ -173,7 +166,7 @@ Each failure increases retries, corrective turns, and token usage—directly inc
 
 ---
 
-### 17. `JSONPathExtractor_Tools`
+### 14. `JSONPathExtractor_Tools`
 
 - **Location:** `packages/components/nodes/tools/JSONPathExtractor/JSONPathExtractor.ts:73`
 - **Severity:** MEDIUM
@@ -183,7 +176,7 @@ Each failure increases retries, corrective turns, and token usage—directly inc
 
 ---
 
-### 18. `DynamoDBRetrieveTool`
+### 15. `DynamoDBRetrieveTool`
 
 - **Location:** `packages/components/nodes/tools/AWSDynamoDBKVStorage/AWSDynamoDBKVStorage.ts:100`
 - **Severity:** MEDIUM
@@ -193,7 +186,7 @@ Each failure increases retries, corrective turns, and token usage—directly inc
 
 ---
 
-### 19. `AWSDynamoDBKVStorage_Tools`
+### 16. `AWSDynamoDBKVStorage_Tools`
 
 - **Location:** `packages/components/nodes/tools/AWSDynamoDBKVStorage/AWSDynamoDBKVStorage.ts:183`
 - **Severity:** MEDIUM
@@ -203,7 +196,7 @@ Each failure increases retries, corrective turns, and token usage—directly inc
 
 ---
 
-### 20. `XMLAgentOutputParser`
+### 17. `XMLAgentOutputParser`
 
 - **Location:** `packages/components/src/agents.ts:873`
 - **Severity:** MEDIUM
@@ -213,7 +206,7 @@ Each failure increases retries, corrective turns, and token usage—directly inc
 
 ---
 
-### 21. `JsonOutputToolsParser`
+### 18. `JsonOutputToolsParser`
 
 - **Location:** `packages/components/src/agents.ts:997`
 - **Severity:** MEDIUM
@@ -223,7 +216,7 @@ Each failure increases retries, corrective turns, and token usage—directly inc
 
 ---
 
-### 22. `JsonOutputToolsParser`
+### 19. `JsonOutputToolsParser`
 
 - **Location:** `packages/components/src/agents.ts:997`
 - **Severity:** MEDIUM
@@ -233,7 +226,7 @@ Each failure increases retries, corrective turns, and token usage—directly inc
 
 ---
 
-### 23. `extractValues`
+### 20. `extractValues`
 
 - **Location:** `packages/server/src/utils/index.ts:1826`
 - **Severity:** MEDIUM
@@ -243,7 +236,7 @@ Each failure increases retries, corrective turns, and token usage—directly inc
 
 ---
 
-### 26. `CachePool`
+### 21. `CachePool`
 
 - **Location:** `packages/server/src/CachePool.ts:7`
 - **Severity:** HIGH
@@ -253,7 +246,7 @@ Each failure increases retries, corrective turns, and token usage—directly inc
 
 ---
 
-### 27. `JSONPathExtractorTool`
+### 22. `JSONPathExtractorTool`
 
 - **Location:** `packages/components/nodes/tools/JSONPathExtractor/JSONPathExtractor.ts:10`
 - **Severity:** HIGH
@@ -263,7 +256,7 @@ Each failure increases retries, corrective turns, and token usage—directly inc
 
 ---
 
-### 28. `WordLoader`
+### 23. `WordLoader`
 
 - **Location:** `packages/components/nodes/documentloaders/MicrosoftWord/WordLoader.ts:11`
 - **Severity:** HIGH
@@ -273,7 +266,7 @@ Each failure increases retries, corrective turns, and token usage—directly inc
 
 ---
 
-### 29. `PowerpointLoader`
+### 24. `PowerpointLoader`
 
 - **Location:** `packages/components/nodes/documentloaders/MicrosoftPowerpoint/PowerpointLoader.ts:11`
 - **Severity:** HIGH
@@ -283,7 +276,7 @@ Each failure increases retries, corrective turns, and token usage—directly inc
 
 ---
 
-### 30. `AWSBedrock_LLMs`
+### 25. `AWSBedrock_LLMs`
 
 - **Location:** `packages/components/nodes/llms/AWSBedrock/AWSBedrock.ts:12`
 - **Severity:** HIGH
@@ -293,7 +286,7 @@ Each failure increases retries, corrective turns, and token usage—directly inc
 
 ---
 
-### 31. `LoadOfSheet`
+### 26. `LoadOfSheet`
 
 - **Location:** `packages/components/nodes/documentloaders/MicrosoftExcel/ExcelLoader.ts:12`
 - **Severity:** HIGH
@@ -303,7 +296,7 @@ Each failure increases retries, corrective turns, and token usage—directly inc
 
 ---
 
-### 32. `CSVLoader`
+### 27. `CSVLoader`
 
 - **Location:** `packages/components/nodes/documentloaders/Csv/CsvLoader.ts:19`
 - **Severity:** HIGH
@@ -313,7 +306,7 @@ Each failure increases retries, corrective turns, and token usage—directly inc
 
 ---
 
-### 33. `ChatNemoGuardrailsModel`
+### 28. `ChatNemoGuardrailsModel`
 
 - **Location:** `packages/components/nodes/chatmodels/ChatNemoGuardrails/ChatNemoGuardrails.ts:26`
 - **Severity:** HIGH
@@ -323,7 +316,7 @@ Each failure increases retries, corrective turns, and token usage—directly inc
 
 ---
 
-### 34. `UnstructuredLoader`
+### 29. `UnstructuredLoader`
 
 - **Location:** `packages/components/nodes/documentloaders/Unstructured/Unstructured.ts:29`
 - **Severity:** HIGH
@@ -333,7 +326,7 @@ Each failure increases retries, corrective turns, and token usage—directly inc
 
 ---
 
-### 35. `_HashedDocument`
+### 30. `_HashedDocument`
 
 - **Location:** `packages/components/src/indexing.ts:39`
 - **Severity:** HIGH
@@ -343,7 +336,7 @@ Each failure increases retries, corrective turns, and token usage—directly inc
 
 ---
 
-### 36. `DynamoDBStoreTool`
+### 31. `DynamoDBStoreTool`
 
 - **Location:** `packages/components/nodes/tools/AWSDynamoDBKVStorage/AWSDynamoDBKVStorage.ts:53`
 - **Severity:** HIGH
@@ -353,7 +346,7 @@ Each failure increases retries, corrective turns, and token usage—directly inc
 
 ---
 
-### 37. `APIChain`
+### 32. `APIChain`
 
 - **Location:** `packages/components/nodes/chains/ApiChain/postCore.ts:55`
 - **Severity:** HIGH
@@ -363,7 +356,7 @@ Each failure increases retries, corrective turns, and token usage—directly inc
 
 ---
 
-### 38. `JSONPathExtractor_Tools`
+### 33. `JSONPathExtractor_Tools`
 
 - **Location:** `packages/components/nodes/tools/JSONPathExtractor/JSONPathExtractor.ts:73`
 - **Severity:** HIGH
@@ -373,7 +366,7 @@ Each failure increases retries, corrective turns, and token usage—directly inc
 
 ---
 
-### 39. `DynamoDBRetrieveTool`
+### 34. `DynamoDBRetrieveTool`
 
 - **Location:** `packages/components/nodes/tools/AWSDynamoDBKVStorage/AWSDynamoDBKVStorage.ts:100`
 - **Severity:** HIGH
@@ -383,7 +376,7 @@ Each failure increases retries, corrective turns, and token usage—directly inc
 
 ---
 
-### 40. `AWSDynamoDBKVStorage_Tools`
+### 35. `AWSDynamoDBKVStorage_Tools`
 
 - **Location:** `packages/components/nodes/tools/AWSDynamoDBKVStorage/AWSDynamoDBKVStorage.ts:183`
 - **Severity:** HIGH
@@ -393,7 +386,7 @@ Each failure increases retries, corrective turns, and token usage—directly inc
 
 ---
 
-### 42. `LangchainChatGoogleGenerativeAI`
+### 36. `LangchainChatGoogleGenerativeAI`
 
 - **Location:** `packages/components/nodes/chatmodels/ChatGoogleGenerativeAI/FlowiseChatGoogleGenerativeAI.ts:557`
 - **Severity:** HIGH
@@ -403,7 +396,7 @@ Each failure increases retries, corrective turns, and token usage—directly inc
 
 ---
 
-### 43. `processNodeOutputs`
+### 37. `processNodeOutputs`
 
 - **Location:** `packages/server/src/utils/buildAgentflow.ts:795`
 - **Severity:** HIGH
@@ -413,7 +406,7 @@ Each failure increases retries, corrective turns, and token usage—directly inc
 
 ---
 
-### 44. `CustomStreamingHandler`
+### 38. `CustomStreamingHandler`
 
 - **Location:** `packages/components/src/handler.ts:1833`
 - **Severity:** HIGH
